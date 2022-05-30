@@ -1,0 +1,31 @@
+{
+    "name": "WiSE Mail Delete-All",
+    "version": "1.0.0",
+    "description": "one click delete [for WiSE only]",
+    "manifest_version": 3,
+    "permissions" : [
+        "tabs",
+        "declarativeContent",
+        "contextMenus",
+        "downloads",
+        "webRequest",
+        "storage",
+        "webNavigation"
+    ],
+    "host_permissions": [
+         "https://wise.sbs.co.kr/"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "background" : {
+        "service_worker" : "background.js"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://wise.sbs.co.kr/*"],
+          "run_at": "document_idle",
+          "js": ["content.js"]
+        }
+    ]
+  }
